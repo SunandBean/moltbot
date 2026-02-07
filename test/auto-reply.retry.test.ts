@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("../src/web/media.js", () => ({
+vi.mock("../src/media/web-media.js", () => ({
   loadWebMedia: vi.fn(async () => ({
     buffer: Buffer.from("img"),
     contentType: "image/jpeg",

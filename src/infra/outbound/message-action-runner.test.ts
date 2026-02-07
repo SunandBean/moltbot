@@ -8,13 +8,15 @@ import { slackPlugin } from "../../../extensions/slack/src/channel.js";
 import { telegramPlugin } from "../../../extensions/telegram/src/channel.js";
 import { whatsappPlugin } from "../../../extensions/whatsapp/src/channel.js";
 import { jsonResult } from "../../agents/tools/common.js";
+import { loadWebMedia } from "../../media/web-media.js";
 import { setActivePluginRegistry } from "../../plugins/runtime.js";
 import { createIMessageTestPlugin, createTestRegistry } from "../../test-utils/channel-plugins.js";
-import { loadWebMedia } from "../../web/media.js";
 import { runMessageAction } from "./message-action-runner.js";
 
-vi.mock("../../web/media.js", async () => {
-  const actual = await vi.importActual<typeof import("../../web/media.js")>("../../web/media.js");
+vi.mock("../../media/web-media.js", async () => {
+  const actual = await vi.importActual<typeof import("../../media/web-media.js")>(
+    "../../media/web-media.js",
+  );
   return {
     ...actual,
     loadWebMedia: vi.fn(actual.loadWebMedia),
